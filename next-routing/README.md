@@ -19,6 +19,8 @@ yarn dev
     # Route with Pages
     # Nested routes
     # Dynamic routes
+        Product Listing Page
+        Product id can also be a string
     # Catch -all routes
     # Navigate from UI
     # Programmatically navigate between Pages
