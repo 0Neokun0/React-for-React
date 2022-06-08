@@ -42,3 +42,10 @@ yarn dev
     5.
         * getStaticProps will run at build time
         * During developement, getStaticProps runs on every request
+## Static Generation Summary so far
+    Static generation is a method of pre-rendering where the HTML pages are generated at build time
+    With and without external data
+    Export getStaticProps function for external data
+    HTML, JavaScript and a JSON file generated
+    If you navigate directly to the page route, the HTML file is served
+    If you navigate to the page route from a different route, the page is created client side using the JavaScrip and JSON prefetched from the server
