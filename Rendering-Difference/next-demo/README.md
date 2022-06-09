@@ -74,3 +74,28 @@ yarn dev
         for the generated path. From the user's perspective, it will transition from "the browser is requesting the page"
         tp "full page is loaded". There is no flash of loading/fallback state.
         2. At the same time, Next.js keeps track of the new list of pre-rendered pages.Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.2
+
+    When?
+        On a UX level, sometimes, people prefer the page to be loaded without a loading indicator if the wait time is a few milli seconds. This helps avoid the layout shift.
+        Some crawlers did not support JavaScrip. The loading page would be rendered and the full page would be loaded which was causing a problem.
+
+## Static Generation
+    Static Generation is a mehtod of pre-rendering where the HTML pages are generated at build time.
+    The pre- rendered static pages can be pushed to a CDN, cached and served to clients across the globe alomst instantly
+    Static contenet is fast and better for SEO as they are immediately inded by search engines
+    Static generation with getStaticProps for data fetching and getStaticPaths for dynamic pages seems like a really good approach to a wide variety of applications in production
+
+## Issues with Static Generation
+    1. The build time is proportional to the number of pages in the apolication
+    2. A page, once generated, can contain stale data till the time you rebuild the application.
+        The build time is proportional to the number of pages in the application.
+
+## Incremental Static Regeneration
+    There was a need to updte only those pages which needed a change without having a to rebuild the entire app
+
+    Incremental Static Regeneration(IRS)
+        With ISR, next.js allows you to updte static pages after you've build your application
+        You can statically generate individual pages without needing to rebuild the entire site, effectively solving the issue of dealing with stale data
+        HOW?
+        In the getstaticProps function, apart from the props key, we can specify a revalidate key
+        The value for revalidate is the number of seconds after which a page re-generate can occur
