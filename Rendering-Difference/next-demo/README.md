@@ -43,6 +43,7 @@ yarn dev
         * getStaticProps will run at build time
         * During developement, getStaticProps runs on every request
 ## Static Generation Summary so far
+
     Static generation is a method of pre-rendering where the HTML pages are generated at build time
     With and without external data
     Export getStaticProps function for external data
@@ -51,6 +52,25 @@ yarn dev
     If you navigate to the page route from a different route, the page is created client side using the JavaScrip and JSON prefetched from the server
 
 ## getStatic Paths and fallback
+
     fallback : false
+        1. The paths returned from getStaticPaths will be rnedered to HTML at build time by getStaticProps
+        2. If fallback is set to false, then any paths not returned by getStaticPaths will result in a 404 page
+    When?
+        * The false value is most suitable if you have an application with a small number of paths to pre-render.
+        * When new pages not added often.
+        * A blog site with a few articles is a good example for fallback set to false
+
     fallback : true
+        1. The paths returned from getStaticPaths will be rended to HTML at build time by getStaticProps.
+        2. The paths that have not been generated at build time will not result in a 404 page.Instead, Next.js will serve a "fallback" version of the page on the first request to such a path.
+        3. In the background, Next.js will statically generated the requested path HTML and JSON. This includes running getStaticProps.
+        4. When that's done, the browser receives the JSON for the generated path.This will be used to automatically render the page with the required props. From the user's perspective, the page will be swapped from the fallback page to the full page.
+        5. At the same time, Next.js keeps track of the new list of pre-rendered pages. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
+
+
     fallback : 'blocking'
+        1. When Next.js will render the page on the server and return the generated HTML, the broweser reveives the HTML 
+        for the generated path. From the user's perspective, it will transition from "the browser is requesting the page"
+        tp "full page is loaded". There is no flash of loading/fallback state.
+        2. At the same time, Next.js keeps track of the new list of pre-rendered pages.Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.2
