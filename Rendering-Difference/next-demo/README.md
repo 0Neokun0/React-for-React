@@ -49,3 +49,8 @@ yarn dev
     HTML, JavaScript and a JSON file generated
     If you navigate directly to the page route, the HTML file is served
     If you navigate to the page route from a different route, the page is created client side using the JavaScrip and JSON prefetched from the server
+
+## getStatic Paths and fallback
+    fallback : false
+    fallback : true
+    fallback : 'blocking'
