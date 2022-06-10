@@ -10,6 +10,8 @@ npm run dev
 yarn dev
 ```
 # Project Structure
+    https://jasonwatmore.com/post/2021/08/19/next-js-11-user-registration-and-login-tutorial-with-example-app#account-layout-jsx
+    
     * components
     React components used by pages or by other React components.
     Global components are in the root /components folder and feature specific components are in subfolders
@@ -43,3 +45,10 @@ yarn dev
 
     The baseUrl is set to "." in the jsconfig.json file to make all import statements (without a dot '.' prefix) relative to the root folder of the project, removing the need for 
     long relative paths like import { userService } from '../../../services';.
+
+## Account Layout component
+    Path:/components/account/Layout.jsx
+    The account layout component contains common layout code for all pages in the /pages/account folder,
+    it simply wraps the {children} elements in a div with some bootstrap classes to set the width and 
+    alignment of all of the account pages. The Layout component is importen by each account page and used to wrap the returned JSX template
+    (e.g. login page, register page).
