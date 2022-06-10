@@ -52,3 +52,25 @@ yarn dev
     it simply wraps the {children} elements in a div with some bootstrap classes to set the width and 
     alignment of all of the account pages. The Layout component is importen by each account page and used to wrap the returned JSX template
     (e.g. login page, register page).
+
+## Users Add/Edit components
+    Path:/components/users/AddEdit.jsx
+    The users AddEdit component is used for both adding and editing users, it contains a form built
+    with the React Hook form library and is used by the add user page and edit user page.
+    For validation rules are defined with the Yup schema validation library and passed with the formOptions
+    to the React Hook Form useForm() function.
+
+    The useForm() hook function retuns an object with methods for working with a form including
+    register inputs,handling form submit, resetting the form,accessing form state,diplaying errors and more.
+
+    The onSubmit function gets called when the form is submitted and valid, and either creates or
+    updates a user depending on which mode it is in.
+
+    The form is in "add mode" when there is no user passed in the compnent props ( props.user),otherwise it
+    is in "edit mode". The variable isAddMode is used to change the form behavious based on the mode it is in,
+    for example in "add mode" the password field is required, and in "edit mode" (!isAddMode) the user details
+    are assigned to the form default values to pre-populate the form when it loads.
+
+    The returned JSX template contains the fomr with all of the input field and validation messages.
+    The form fields are registered with the React Hook Form by calling the regiter function with 
+    the field name from each input element (e.g. {...register("firstName")}).
